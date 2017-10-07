@@ -128,6 +128,10 @@ const RandomWallpaperSettings = new Lang.Class({
 			this._builder.get_object('disable-hover-preview'),
 			'active',
 			Gio.SettingsBindFlags.DEFAULT);
+		this._settings.bind('fetch-on-startup',
+			this._builder.get_object('fetch-on-startup'),
+			'active',
+			Gio.SettingsBindFlags.DEFAULT);
 	},
 
 	_toggleAfSliders: function () {

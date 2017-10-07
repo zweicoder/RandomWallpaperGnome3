@@ -62,6 +62,10 @@ let WallpaperController = new Lang.Class({
 		this._wallheavenAdapter = new SourceAdapter.WallheavenAdapter();
 
 		this.logger = new LoggerModule.Logger('RWG3', 'WallpaperController');
+
+		if (this._settings.get("fetch-on-startup", "boolean")) {
+			this.fetchNewWallpaper();
+		}
 	},
 
 	_updateHistory: function () {
@@ -229,10 +233,11 @@ let WallpaperController = new Lang.Class({
 					// insert file into history
 					this._historyController.insert(historyElement);
 
-					// call callback if given
 					this._stopLoadingHooks.forEach((element) => {
 						element(null);
 					});
+
+					// call callback if given
 					if (callback) {
 						callback();
 					}
