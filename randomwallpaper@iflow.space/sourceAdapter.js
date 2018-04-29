@@ -284,7 +284,8 @@ var WallhavenAdapter = new Lang.Class({
 		this.options.purity = purity.join('');
 		this.options.topRange='3M'
 		this.options.order='desc'
-		this.options.sorting='toplist'
+		const sortOptions = ['toplist', 'views','favorites']
+		this.options.sorting=Math.floor(Math.random() * sortOptions.length).toString()
 		this.options.page = Math.ceil(Math.random() * 10).toString()
 	}
 });
