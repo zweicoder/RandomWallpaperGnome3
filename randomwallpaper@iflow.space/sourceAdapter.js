@@ -203,6 +203,7 @@ var WallhavenAdapter = new Lang.Class({
 		this._readOptionsFromSettings();
 		let optionsString = this._generateOptionsString();
 		let url = 'http://alpha.wallhaven.cc/search?' + optionsString;
+		this.logger.info('Requesting wallpapers from: ' + url)
 		url = encodeURI(url);
 
 		let message = Soup.Message.new('GET', url);
@@ -215,6 +216,9 @@ var WallhavenAdapter = new Lang.Class({
 			let uniqueUrlArray = urlArray.filter(function (item, pos) {
 				return urlArray.indexOf(item) == pos;
 			});
+			this.logger.info(uniqueUrlArray.length)
+			// uniqueUrlArray = uniqueUrlArray.slice(0,50)
+			// this.logger.info(uniqueUrlArray)
 
 			// get a random entry from the array
 			let url = uniqueUrlArray[Math.floor(Math.random() * uniqueUrlArray.length)];
@@ -278,6 +282,10 @@ var WallhavenAdapter = new Lang.Class({
 		purity.push(+this._settings.get('allow-sketchy', 'boolean'));
 		purity.push(0); // required by wallhaven
 		this.options.purity = purity.join('');
+		this.options.topRange='3M'
+		this.options.order='desc'
+		this.options.sorting='toplist'
+		this.options.page = Math.ceil(Math.random() * 10).toString()
 	}
 });
 

@@ -224,6 +224,7 @@ var WallpaperController = new Lang.Class({
 
 		this._requestRandomImageFromAdapter((historyElement) => {
 			this.logger.info("Requesting image: " + historyElement.source.imageDownloadUrl);
+			this.logger.info("lala");
 
 			this._fetchFile(historyElement.source.imageDownloadUrl, (historyId, path) => {
 				historyElement.path = path;

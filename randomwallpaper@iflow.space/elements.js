@@ -261,13 +261,13 @@ var StatusElement = new Lang.Class({
 
 	startLoading: function () {
 		this.isLoading = true;
-		Tweener.addTween(this, this.loadingTweenOut);
+		// Tweener.addTween(this, this.loadingTweenOut);
 	},
 
 	stopLoading: function () {
 		this.isLoading = false;
-		Tweener.removeTweens(this);
-		this.opacity = 255;
+		// Tweener.removeTweens(this);
+		// this.opacity = 255;
 	}
 
 });
